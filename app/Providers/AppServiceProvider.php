@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL; // <-- Ye line lazmi add karni hai
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+
+        // Ye hissa styling theek karne ke liye hai
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }

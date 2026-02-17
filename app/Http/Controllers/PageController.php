@@ -35,7 +35,6 @@ class PageController extends Controller
     {
         return view('pages.salaries.show', compact('job'));
     }
-    
 
     public function companies()
     {
@@ -43,4 +42,5 @@ class PageController extends Controller
         $employers = Employer::all();
         return view('pages.companies', compact('employers'));
     }
+
 }
