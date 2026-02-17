@@ -42,4 +42,6 @@ Route::get('/salaries/{job}', [PageController::class, 'showSalary'])->name('page
 Route::get('/', [JobController::class, 'index'])->name('/');
 
 // Login User Profile
-Route::get('/profile', [ProfileController::class, 'show'])->name('auth.profile');
+Route::get('/profile', [ProfileController::class, 'show'])
+    ->middleware('auth')
+    ->name('auth.profile');
