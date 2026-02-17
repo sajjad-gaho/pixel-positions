@@ -1,0 +1,21 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-DjNDAGT4.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/images/logo-1.svg": {
+    "file": "assets/logo-1-DuBTfVMW.svg",
+    "src": "resources/images/logo-1.svg"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DIuewKhF.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
