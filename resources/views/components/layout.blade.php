@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap"
         rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     <title>Pixel Positions</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -15,28 +16,24 @@
 <body class="bg-dark text-white font-sans pb-20">
     <div class="px-10 w-full">
         <!-- <nav class="flex justify-between items-center py-4 pl-4 border-b border-white/10"> -->
-       <nav x-data="{ open: false }" class="flex justify-between items-center py-4 pl-4 border-b border-white/10 relative">
+        <nav x-data="{ open: false }" class="flex justify-between items-center py-4 pl-4 border-b border-white/10 relative">
             <div>
                 <a href="/">
                     <img src="{{Vite::asset('resources/images/logo-1.svg') }}" alt="logo">
                 </a>
             </div>
-                <div class="hidden md:flex space-x-6 font-bold">
+            <div class="hidden md:flex space-x-6 font-bold">
                 <a href="{{ route('/') }}" class="hover:text-blue-400">Jobs</a>
-                <!-- <a href="{{ route ('pages.jobs') }}" class="hover:text-blue-400">Jobs</a> -->
                 <a href="{{ route('pages.careers') }}" class="hover:text-blue-400">Careers</a>
                 <a href="{{ route('pages.salaries') }}" class="hover:text-blue-400">Salaries</a>
                 <a href="{{ route('pages.companies') }}" class="hover:text-blue-400">Companies</a>
-                <!-- <a href="#">Jobs</a> -->
-                <!-- <a href="#">Careers</a> -->
-                <!-- <a href="#">Salaries</a> -->
-                <!-- <a href="#">Companies</a> -->
             </div>
 
             @auth
             <div class="hidden md:flex space-x-6 font-bold flex">
 
                 <a href="/jobs/create">Post a Job</a>
+                <a href="{{ route('auth.profile') }}" class="gap-2"> {{ auth()->user()->name }} </a>
                 <form action="/logout" method="POST">
                     @csrf
                     @method('DELETE')
@@ -73,6 +70,7 @@
                 <hr class="border-white/10">
                 @auth
                 <a href="/jobs/create" class="font-bold text-blue-400">Post a Job</a>
+                <a href="{{ route('auth.profile') }}" class="gap-1"> {{ auth()->user()->name }} </a>
                 <form action="/logout" method="POST">@csrf @method('DELETE') <button class="font-bold">Log Out</button></form>
                 @endauth
                 @guest

@@ -7,7 +7,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PageController;
-
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
@@ -40,3 +40,6 @@ Route::get('/salaries/{job}', [PageController::class, 'showSalary'])->name('page
 
 // Agar ye aapka main page hai
 Route::get('/', [JobController::class, 'index'])->name('/');
+
+// Login User Profile
+Route::get('/profile', [ProfileController::class, 'show'])->name('auth.profile');
