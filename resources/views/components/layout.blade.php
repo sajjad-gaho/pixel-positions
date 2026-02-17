@@ -15,15 +15,15 @@
 <body class="bg-dark text-white font-sans pb-20">
     <div class="px-10 w-full">
         <!-- <nav class="flex justify-between items-center py-4 pl-4 border-b border-white/10"> -->
-        <nav x-data="{ open: false }" class="flex justify-between items-center py-4 pl-4 border-b border-white/10 relative">
+       <nav x-data="{ open: false }" class="flex justify-between items-center py-4 pl-4 border-b border-white/10 relative">
             <div>
                 <a href="/">
                     <img src="{{Vite::asset('resources/images/logo-1.svg') }}" alt="logo">
                 </a>
             </div>
-            <div class="hidden md:flex space-x-6 font-bold">
+                <div class="hidden md:flex space-x-6 font-bold">
                 <a href="{{ route('/') }}" class="hover:text-blue-400">Jobs</a>
-                <!-- <a href="{{ route('pages.jobs') }}" class="hover:text-blue-400">Jobs</a> -->
+                <!-- <a href="{{ route ('pages.jobs') }}" class="hover:text-blue-400">Jobs</a> -->
                 <a href="{{ route('pages.careers') }}" class="hover:text-blue-400">Careers</a>
                 <a href="{{ route('pages.salaries') }}" class="hover:text-blue-400">Salaries</a>
                 <a href="{{ route('pages.companies') }}" class="hover:text-blue-400">Companies</a>
@@ -34,7 +34,7 @@
             </div>
 
             @auth
-            <div class="hidden md-flex space-x-6 font-bold flex">
+            <div class="hidden md:flex space-x-6 font-bold flex">
 
                 <a href="/jobs/create">Post a Job</a>
                 <form action="/logout" method="POST">
@@ -70,7 +70,7 @@
                 <a href="{{ route('pages.careers') }}" class="font-bold">Careers</a>
                 <a href="{{ route('pages.salaries') }}" class="font-bold">Salaries</a>
                 <a href="{{ route('pages.companies') }}" class="font-bold">Companies</a>
-                <hr class="border-white/25">
+                <hr class="border-white/10">
                 @auth
                 <a href="/jobs/create" class="font-bold text-blue-400">Post a Job</a>
                 <form action="/logout" method="POST">@csrf @method('DELETE') <button class="font-bold">Log Out</button></form>

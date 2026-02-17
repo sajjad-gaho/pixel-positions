@@ -44,7 +44,6 @@ public function index()
 
     $jobs = Job::latest()->with(['employer', 'tags'])->get()->groupBy('featured');
 
-
     return view('jobs.index', [
         'featuredJobs' => $jobs[1] ?? [], // 1 for featured
         'jobs' => $jobs[0] ?? [],         // 0 for non-featured

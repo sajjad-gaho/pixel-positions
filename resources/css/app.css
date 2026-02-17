@@ -4,6 +4,10 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+/* In lines ko mazeed secure karein */
+@source "../../resources/**/*.blade.php";
+@source "../../resources/**/*.js";
+@source "../../app/View/**/*.php";
 /* @source './resources*.vue'; */
 
 @theme {
