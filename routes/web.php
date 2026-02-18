@@ -8,10 +8,33 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\http\Controllers\Adminmiddleware;
+use App\Http\Controllers\Admin\AdminController;
+// use App\http\Controllers\Middleware\Adminmiddleware;
 
+// this open for all (Guest & Login both)
 Route::get('/', [JobController::class, 'index']);
-Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
-Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
+
+// only for Login Users(Profile etc)
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('auth.profile');
+});
+
+// Just for ADMIN (Job Posting)
+// We 'auth' & 'admin' both middleware lagaye hain
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/jobs/create', [JobController::class, 'create']);
+    Route::post('/jobs', [JobController::class, 'store']);
+});
+
+// Route::get('/', [JobController::class, 'index']);
+// Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
+// Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 Route::get('/search', SearchController::class);
 Route::get('/tags/{tag:name}', TagController::class);
@@ -42,6 +65,9 @@ Route::get('/salaries/{job}', [PageController::class, 'showSalary'])->name('page
 Route::get('/', [JobController::class, 'index'])->name('/');
 
 // Login User Profile
-Route::get('/profile', [ProfileController::class, 'show'])
-    ->middleware('auth')
-    ->name('auth.profile');
+// Route::get('/profile', [ProfileController::class, 'show'])
+    // ->middleware('auth')
+    // ->name('auth.profile');
+
+
+// Route::get('/job{job: $job}', AdminController::class);

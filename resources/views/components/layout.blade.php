@@ -32,12 +32,16 @@
             @auth
             <div class="hidden md:flex space-x-6 font-bold flex">
 
-                <a href="/jobs/create">Post a Job</a>
+                @if(auth()->user()->role === 'admin')
+                <a href="{{ route('admin.dashboard') }}" class="hover:text-blue-400">Dashboard</a>
+                <a href="/jobs/create" class="hover:text-blue-400">Post a Job</a>
+                @endif
+
                 <a href="{{ route('auth.profile') }}" class="gap-2"> {{ auth()->user()->name }} </a>
                 <form action="/logout" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button>Log Out</button>
+                    <button class="hover:text-blue-400">Log Out</button>
                 </form>
 
             </div>

@@ -1,7 +1,7 @@
 <x-layout>
     <div class="space-y-16">
         <section class="text-center py-10">
-            <h1 class="text-5xl font-bold">Build Your Future With Us</h1>
+            <x-page-heading>Build Your Future With Us</x-page-heading>
             <p class="text-gray-400 mt-4 text-lg">We help developers find their dream roles in top-tier companies.</p>
         </section>
 
