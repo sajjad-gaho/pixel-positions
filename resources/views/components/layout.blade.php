@@ -48,7 +48,6 @@
             @endauth
 
             @guest
-
             <div class="space-x-6 font-bold">
                 <a href="/register">Sign Up</a>
                 <a href="/login">Sign In</a>
@@ -56,7 +55,6 @@
             @endguest
 
             <!-- For Mobile Responsive Toggle Button Show For Navbar -->
-
             <div class="md:hidden flex items-center">
                 <button @click="open = !open" class="text-white focus:outline-none">
                     <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +71,11 @@
                 <a href="{{ route('pages.companies') }}" class="font-bold">Companies</a>
                 <hr class="border-white/10">
                 @auth
+
+                @if(auth()->user()->role === 'admin')
+                <a href="{{route ('admin.dashboard') }}" class="font-bold text-blue-400">Dashboard</a>
                 <a href="/jobs/create" class="font-bold text-blue-400">Post a Job</a>
+                @endif
                 <a href="{{ route('auth.profile') }}" class="gap-1"> {{ auth()->user()->name }} </a>
                 <form action="/logout" method="POST">@csrf @method('DELETE') <button class="font-bold">Log Out</button></form>
                 @endauth
